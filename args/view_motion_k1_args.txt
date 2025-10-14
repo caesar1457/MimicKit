@@ -1,0 +1,8 @@
+--mode test
+--num_envs 1
+
+--env_config data/envs/view_motion_k1_env.yaml
+--agent_config data/agents/deepmimic_k1_ppo_agent.yaml
+
+--test_episodes 1000000
+

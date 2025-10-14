@@ -46,6 +46,8 @@ python mimickit/run.py --arg_file args/deepmimic_humanoid_ppo_args.txt --visuali
 The arguments in `arg_file` are treated the same as command line arguments. Arguments for all algorithms are provided in [`args/`](args/).
 
 
+export LD_LIBRARY_PATH=/home/zhaozhiye/miniconda3/envs/mimic/lib:$LD_LIBRARY_PATH
+
 ## Testing
 
 To test a model, run the following command:

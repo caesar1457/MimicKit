@@ -1,0 +1,9 @@
+--num_envs 4096
+
+--env_config data/envs/amp_k1_env.yaml
+--agent_config data/agents/amp_k1_agent.yaml
+
+--log_file output/k1_amp/log.txt
+--out_model_file output/k1_amp/model.pt
+
+
