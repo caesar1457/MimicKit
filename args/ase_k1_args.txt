@@ -6,4 +6,4 @@
 --log_file output/k1_ase/log.txt
 --out_model_file output/k1_ase/model.pt
 
-
+--visualize false

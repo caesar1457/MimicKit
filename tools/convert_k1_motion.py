@@ -17,7 +17,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-from mimickit.anim.motion import Motion
+from mimickit.anim.motion import Motion, LoopMode
 import mimickit.util.torch_util as torch_util
 import torch
 
@@ -102,7 +102,7 @@ def convert_motion(input_file, output_file=None):
     motion = Motion(
         frames=frames,
         fps=fps,
-        loop_mode="wrap"  # 可以是 "wrap" 或 "none"
+        loop_mode=LoopMode.WRAP  # 使用枚举而不是字符串
     )
     
     # 确定输出文件名

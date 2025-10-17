@@ -6,4 +6,4 @@
 --log_file output/k1_amp/log.txt
 --out_model_file output/k1_amp/model.pt
 
-
+--visualize false

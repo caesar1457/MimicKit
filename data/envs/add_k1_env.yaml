@@ -15,7 +15,7 @@ env:
     zero_center_action: True
 
     ref_char_offset: [2.0, 0.0, 0.0] # m
-    # init_pose: [root_pos(3), root_rot(3), joints(22)]
+    # init_pose: [root_pos(3), exp_map_rot(3), joints(22)] - 简单站立姿态
     init_pose: [0, 0, 0.65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     enable_early_termination: True
@@ -23,7 +23,7 @@ env:
     key_bodies: ["left_foot_link", "right_foot_link", "Head_2", "left_hand_link", "right_hand_link"]
     contact_bodies: ["Left_Shank", "Left_Ankle_Cross", "left_foot_link", "Right_Shank", "Right_Ankle_Cross", "right_foot_link"]
     
-    motion_file: "data/motions/k1/k1_walk.pkl"
+    motion_file: "data/motions/k1/k1_k1_MJ2_22s_mix_aligned_time_1016-1603.pkl"
 
     # Joint error weights for 22 joints
     joint_err_w: [0.5, 0.5, 1.0, 1.0, 1.0, 0.6, 1.0, 1.0, 1.0, 0.6, 1.0, 1.0, 1.0, 0.6, 0.5, 0.5, 1.0, 1.0, 1.0, 0.6, 0.5, 0.5]
@@ -66,6 +66,8 @@ engine:
             bounce_threshold_velocity: 0.2
             max_depenetration_velocity: 10.0
             default_buffer_size_multiplier: 10.0
+            max_gpu_contact_pairs: 8388608  # 8M pairs
+            found_lost_pairs_capacity: 524288  # 512K pairs
 
         flex:
             num_inner_iterations: 10

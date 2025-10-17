@@ -5,3 +5,7 @@
 
 --log_file output/log.txt
 --out_model_file output/model.pt
+
+--logger tb
+
+--visualize false

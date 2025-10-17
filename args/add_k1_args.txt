@@ -4,6 +4,8 @@
 --agent_config data/agents/add_k1_agent.yaml
 
 --log_file output/k1_add/log.txt
---out_model_file output/k1_add/model.pt
+--out_model_file output/k1_add/k1_add_model.pt
 
+--logger tb
 
+--visualize false

@@ -1,5 +1,5 @@
 <mujoco model="K1">
-  <compiler angle="radian" meshdir="meshes/"/>
+  <compiler angle="radian" meshdir="meshes/" autolimits="true"/>
   <option timestep="0.002" integrator="RK4" />
 
   <asset>
@@ -35,7 +35,7 @@
   <default>
     <motor ctrllimited="true"/>
     <default class="body">
-      <joint type="hinge" armature="0.01" damping="0.001" frictionloss="0.1" limited="true"/>
+      <joint type="hinge" armature="0.01" damping="0.001" frictionloss="0.1" />
     </default>
   </default>
 

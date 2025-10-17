@@ -6,4 +6,4 @@
 --log_file output/k1_deepmimic_ppo/log.txt
 --out_model_file output/k1_deepmimic_ppo/model.pt
 
-
+--visualize false

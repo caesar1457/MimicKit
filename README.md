@@ -29,6 +29,8 @@ Download assets and motion data from [here](https://1sfu-my.sharepoint.com/:u:/g
 To train a model, run the following command:
 ```
 python mimickit/run.py --mode train --num_envs 4096 --env_config data/envs/deepmimic_humanoid_env.yaml --agent_config data/agents/deepmimic_humanoid_ppo_agent.yaml --visualize true --log_file output/log.txt --out_model_file output/model.pt
+
+python mimickit/run.py --mode train --num_envs 4096 --env_config data/envs/deepmimic_humanoid_env.yaml --agent_config data/agents/deepmimic_humanoid_ppo_agent.yaml --visualize true --log_file output/log.txt --out_model_file output/model.pt
 ```
 - `--mode` selects either `train` or `test` mode.
 - `--num_envs` specifies the number of parallel environments used for simulation.
@@ -47,7 +49,9 @@ The arguments in `arg_file` are treated the same as command line arguments. Argu
 
 
 export LD_LIBRARY_PATH=/home/zhaozhiye/miniconda3/envs/mimic/lib:$LD_LIBRARY_PATH
+CUDA_VISIBLE_DEVICES=7  python mimickit/run.py --arg_file args/add_g1_args.txt
 
+CUDA_VISIBLE_DEVICES=6  python mimickit/run.py --mode train  --arg_file args/add_k1_args.txt --num_envs 1
 ## Testing
 
 To test a model, run the following command:

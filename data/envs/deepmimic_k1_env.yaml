@@ -29,7 +29,7 @@ env:
     contact_bodies: ["Left_Shank", "Left_Ankle_Cross", "left_foot_link", "Right_Shank", "Right_Ankle_Cross", "right_foot_link"]
     log_tracking_error: False
 
-    motion_file: "data/motions/k1/k1_walk.pkl"
+    motion_file: "data/motions/k1/k1_walk_fixed.pkl"
 
     # Joint error weights for 22 joints:
     # [Head(2), L_Arm(4), R_Arm(4), L_Leg(6), R_Leg(6)]

@@ -10,7 +10,7 @@ env:
 
     key_bodies: ["left_foot_link", "right_foot_link", "Head_2", "left_hand_link", "right_hand_link"]
     
-    motion_file: "data/motions/k1/k1_walk.pkl"
+    motion_file: "data/motions/k1/k1_walk_fixed.pkl"
 
 engine:
     engine_name: "isaac_gym"
