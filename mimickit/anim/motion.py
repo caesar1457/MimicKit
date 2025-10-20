@@ -26,7 +26,18 @@ class CustomUnpickler(pickle.Unpickler):
 
 def load_motion(file):
     with open(file, "rb") as filestream:
-        motion_data = CustomUnpickler(filestream).load()
+        data = CustomUnpickler(filestream).load()
+        
+        # 如果是字典格式（新格式），手动构造 Motion 对象
+        if isinstance(data, dict):
+            loop_mode_val = data["loop_mode"]
+            fps = data["fps"]
+            frames = data["frames"]
+            loop_mode = LoopMode(loop_mode_val)
+            motion_data = Motion(loop_mode=loop_mode, fps=fps, frames=frames)
+        else:
+            # 如果是直接加载的 Motion 对象（旧格式），直接使用
+            motion_data = data
     return motion_data
 
 class Motion():
@@ -38,7 +49,12 @@ class Motion():
 
     def save(self, out_file):
         with open(out_file, "wb") as out_f:
-            pickle.dump(self, out_f)
+            out_dict = {
+                "loop_mode": self.loop_mode.value,
+                "fps": self.fps,
+                "frames": self.frames
+            }
+            pickle.dump(out_dict, out_f)
         return
 
     def get_length(self):

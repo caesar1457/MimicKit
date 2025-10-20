@@ -3,7 +3,7 @@
 
 ![Teaser](images/MimicKit_teaser.gif)
 
-This framework provides a suite of motion imitation algorithms for training motion controllers. This codebase includes implementations of:
+This framework provides a suite of motion imitation methods for training motion controllers. A more detailed overview of MimicKit is available in the [Starter Guide](https://arxiv.org/abs/2510.13794). This codebase includes implementations of:
 - [DeepMimic](https://xbpeng.github.io/projects/DeepMimic/index.html)
 - [AMP](https://xbpeng.github.io/projects/AMP/index.html)
 - [ASE](https://xbpeng.github.io/projects/ASE/index.html)
@@ -39,7 +39,7 @@ python mimickit/run.py --mode train --num_envs 4096 --env_config data/envs/deepm
 - `--visualize` enables visualization. Rendering should be disabled for faster training.
 - `--log_file` specifies the output log file, which will keep track of statistics during training.
 - `--out_model_file` specifies the output model file, which contains the model parameters.
-- `--logger` specifies the logger used to record training stats. The options are tensorboard `tb` or `wandb`.
+- `--logger` specifies the logger used to record training stats. The options are TensorBoard `tb` or `wandb`.
 
 Instead of specifying all arguments through the command line, arguments can also be loaded from an `arg_file`:
 ```
@@ -58,7 +58,7 @@ To test a model, run the following command:
 ```
 python mimickit/run.py --arg_file args/deepmimic_humanoid_ppo_args.txt --num_envs 4 --visualize true --mode test --model_file data/models/deepmimic_humanoid_spinkick_model.pt
 ```
-- `--model_file` specifies the `.pt` file that contains the parameters of the trained model. Pretrained models are available in [`data/models/`](data/models/).
+- `--model_file` specifies the `.pt` file that contains the parameters of the trained model. Pretrained models are available in [`data/models/`](data/models/), and the corresponding training log files are available in [`data/logs/`](data/logs/).
 
 
 ## Distributed Training
@@ -72,7 +72,7 @@ python mimickit/run.py --arg_file args/deepmimic_humanoid_ppo_args.txt --num_wor
 
 ## Visualizing Training Logs
 
-When using the tensorboard logger during training, a tensorboard `events` file will be saved the same output directory as the log file. The log can be viewed with:
+When using the TensorBoard logger during training, a TensorBoard `events` file will be saved the same output directory as the log file. The log can be viewed with:
 ```
 tensorboard --logdir=output/ --port=6006 --bind_all --samples_per_plugin scalars=999999
 ```
@@ -87,7 +87,7 @@ The `view_motion` environment can be used to visualize motion clips:
 python mimickit/run.py --mode test --arg_file args/view_motion_humanoid_args.txt --visualize true
 ```
 
-Motion clips are represented by the `Motion` class implemented in [`motion.py`](mimickit/anim/motion.py). Each motion clip is stored in a `.pkl` file. Each frame in the motion specifies the pose of the character according to
+Motion clips are represented by the `Motion` class implemented in [`motion.py`](mimickit/anim/motion.py). Each motion clip is stored in a `.pkl` file. Each frame in a motion specifies the pose of the character according to
 ```
 [root position (3D), root rotation (3D), joint rotations]
 ```
@@ -98,16 +98,21 @@ where 3D rotations are specified using 3D exponential maps. Joint rotations are 
 The rotations of 3D joints are represented using 3D exponential maps, and the rotations of 1D joints are represented using 1D rotation angles.
 
 
+## Motion Retargeting
+Motion retargeting can be done using [GMR](https://github.com/YanjieZe/GMR). A script to convert GMR files to the MimicKit format is available in [`tools/gmr_to_mimickit/`](tools/gmr_to_mimickit/).
+
 ## Citation
 If you find this codebase helpful, please cite:
 ```
-@misc{MimicKit,
-	title = {MimicKit: A Reinforcement Learning Framework for Motion Imitation and Control},
-	author = {Peng, Xue Bin},
-	year = {2025},
-	publisher = {GitHub},
-	journal = {GitHub repository},
-	howpublished = {\url{https://github.com/xbpeng/MimicKit}},
+@misc{
+      MimicKitPeng2025,
+      title={MimicKit: A Reinforcement Learning Framework for Motion Imitation and Control}, 
+      author={Xue Bin Peng},
+      year={2025},
+      eprint={2510.13794},
+      archivePrefix={arXiv},
+      primaryClass={cs.GR},
+      url={https://arxiv.org/abs/2510.13794}, 
 }
 ```
 Please also consider citing the relevant papers:
