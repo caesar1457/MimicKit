@@ -49,7 +49,7 @@ The arguments in `arg_file` are treated the same as command line arguments. Argu
 
 
 export LD_LIBRARY_PATH=/home/zhaozhiye/miniconda3/envs/mimic/lib:$LD_LIBRARY_PATH
-CUDA_VISIBLE_DEVICES=7  python mimickit/run.py --arg_file args/add_g1_args.txt
+CUDA_VISIBLE_DEVICES=4  python mimickit/run.py --arg_file args/add_k1_args.txt
 
 CUDA_VISIBLE_DEVICES=6  python mimickit/run.py --mode train  --arg_file args/add_k1_args.txt --num_envs 1
 ## Testing

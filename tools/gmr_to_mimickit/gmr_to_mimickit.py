@@ -38,6 +38,19 @@ sys.path.append(".")  # Ensure the repository root is on sys.path so we can use 
 from mimickit.anim.motion import Motion, LoopMode
 from mimickit.util.torch_util import quat_to_exp_map
 
+class NumpyUnpickler(pickle.Unpickler):
+    """自定义 Unpickler 来处理 numpy 2.0 的模块重命名，保持向后兼容"""
+    
+    def find_class(self, module, name):
+        # 将 numpy._core 重新映射到 numpy.core（numpy 1.x 兼容）
+        if module.startswith('numpy._core'):
+            module = module.replace('numpy._core', 'numpy.core')
+        elif module.startswith('numpy._') and not module.startswith('numpy.__'):
+            # 处理其他 numpy._ 开头的私有模块
+            module = module.replace('numpy._', 'numpy.')
+        
+        return super().find_class(module, name)
+
 def convert_gmr_to_mimickit(gmr_file_path, output_file_path, loop_mode, start_frame, end_frame):
     """
     Convert a GMR compatible motion dataset to MimicKit compatible dataset.
@@ -55,8 +68,16 @@ def convert_gmr_to_mimickit(gmr_file_path, output_file_path, loop_mode, start_fr
         raise ValueError(f"Invalid loop_mode: {loop_mode}. Choose 'wrap' or 'clamp'.")
     
     # Load GMR format data
-    with open(gmr_file_path, 'rb') as f:
-        gmr_data = pickle.load(f)
+    # Use custom unpickler to handle numpy 2.0+ pickle files in numpy 1.x environment
+    try:
+        with open(gmr_file_path, 'rb') as f:
+            unpickler = NumpyUnpickler(f)
+            gmr_data = unpickler.load()
+    except Exception as e:
+        print(f"⚠️  Warning: Failed to load with custom unpickler: {e}")
+        print("Trying standard pickle.load...")
+        with open(gmr_file_path, 'rb') as f:
+            gmr_data = pickle.load(f)
     
     # Extract data from GMR format
     fps = gmr_data['fps']
