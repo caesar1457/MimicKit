@@ -16,14 +16,18 @@ env:
 
     ref_char_offset: [2.0, 0.0, 0.0] # m
     # init_pose: [root_pos(3), exp_map_rot(3), joints(22)] - 简单站立姿态
-    init_pose: [0, 0, 0.65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    init_pose: [0, 0, 0.55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+
+
 
     enable_early_termination: True
     termination_height: 0.25
     key_bodies: ["left_foot_link", "right_foot_link", "Head_2", "left_hand_link", "right_hand_link"]
     contact_bodies: ["Left_Shank", "Left_Ankle_Cross", "left_foot_link", "Right_Shank", "Right_Ankle_Cross", "right_foot_link"]
     
-    motion_file: "data/motions/k1/k1_roundkick_mix_aligned_clamp.pkl"
+    # motion_file: "data/motions/k1/k1_roundkick_v6.4_wrap.pkl"
+    motion_file: "data/motions/k1/k1_roundkick_v6.4_clamp.pkl"
 
     # Joint error weights for 22 joints
     joint_err_w: [0.5, 0.5, 1.0, 1.0, 1.0, 0.6, 1.0, 1.0, 1.0, 0.6, 1.0, 1.0, 1.0, 0.6, 0.5, 0.5, 1.0, 1.0, 1.0, 0.6, 0.5, 0.5]

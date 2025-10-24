@@ -3,8 +3,9 @@
 --env_config data/envs/add_k1_env.yaml
 --agent_config data/agents/add_k1_agent.yaml
 
---log_file output/k1_add_roundkick-wrap/log.txt
---out_model_file output/k1_add_roundkick-wrap/k1_add_roundkick-wrap.pt
+--log_file output/k1_add_roundkick-v6.4-clamp/log.txt
+--out_model_file output/k1_add_roundkick-v6.4-clamp/k1_add_roundkick-v6.4-clamp.pt
+--model_file output/k1_add_roundkick-v5-clamp/k1_add_roundkick-v5-clamp.pt
 
 --logger tb
 

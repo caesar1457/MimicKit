@@ -3,7 +3,7 @@ This module provides functionality to convert motion data from GMR format to Mim
 
 Usage:
     Command line:
-        python tools/data_format/gmr_to_mimickit.py
+        python tools/gmr_to_mimickit/gmr_to_mimickit.py
     Required arguments:
         --input_file PATH       Path to the input GMR pickle file
         --output_file PATH      Path to save the output MimicKit pickle file
